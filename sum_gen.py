@@ -12,16 +12,18 @@
 # if path to folder is ommited then the current working
 # directory is assumed
 
+## \package sum_gen
+#  Generates a checksum file for all the files in a directory tree.
+
 import hashlib, os, sys
 
-# computes the hash for the file.
+## \brief Computes the hash for the file.
 #
-# Opens the the file and computes the sha512
-# sum of its contents.
+# Opens the file and computes the sha512
+# signature of its contents.
 #
-# @param dir: dir path of the file (usually relative to the programs cwd)
-# @param fname: name of the file we want to compute.
-# @return sha512 hash hexdigest of the files contents.
+# \param fname: name of the file we want to compute. 
+# \return sha512 hash hexdigest of the files contents. 
 def file_hash(fname):
     buffer_size = 1024
     _hash = hashlib.sha512()
@@ -42,12 +44,12 @@ def file_hash(fname):
         dig = b''
     return dig
 
-# walks in the directory tree and computes
-# the checksum of all file.
+## \brief Traverses a directory tree and computes
+# the checksum of all files. 
 #
-# @param root: the top directory we want to traverse
-# @return True if traversal was successful or False if it can't create the checksum
-# file
+# \param root: the top directory we want to traverse 
+# \return True if traversal was successful or False if it can't create the checksum
+# file or find the root path. 
 def walk(root):
     #abs_root = os.path.abspath(root)
     curr_dir = root
